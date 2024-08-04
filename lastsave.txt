@@ -1,0 +1,35 @@
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import javax.swing.*;
+
+public class Window extends JFrame {
+    private Image image;
+
+    public Window() {
+        // Set the title of the JFrame
+        setTitle("Snake");
+        setIconImage(Toolkit.getDefaultToolkit().getImage("src/snake_logo.png"));
+
+        // Load the image using Toolkit
+        image = Toolkit.getDefaultToolkit().getImage("src/headr_asset.png");
+
+        // Set the default close operation and make the JFrame visible
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1280, 720);
+        setVisible(true);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        // Call the superclass method to ensure proper rendering
+        super.paint(g);
+
+        // Draw the image on the JFrame using drawImage()
+        g.drawImage(image, 1240, 360, this);
+    }
+
+    public static void main(String[] args) {
+        // Run the application on the Event Dispatch Thread (EDT)
+        SwingUtilities.invokeLater(Window::new);
+    }
+}
